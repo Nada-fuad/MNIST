@@ -55,3 +55,25 @@ plt.imshow(pixels, cmap="gray")
 plt.title(f"MNIST – Label: {train_df.iloc[0]['label']}")
 plt.axis("off")
 plt.show()
+
+
+
+
+# Erstes Bild in einen Vektor umwandeln
+x = pixels.flatten()
+
+# Pixelwerte normalisieren
+x = x.astype(np.float32) / 255.0
+
+print("Nach Flatten:", x.shape)
+print("Kleinster Pixelwert:", x.min())
+print("Größter Pixelwert:", x.max())
+
+# One-Hot-Encoding
+label = int(train_df.iloc[0]["label"])
+
+target = np.zeros(10)
+target[label] = 1
+
+print("One-Hot-Target:", target)
+
